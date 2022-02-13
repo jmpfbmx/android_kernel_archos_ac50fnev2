@@ -85,6 +85,19 @@ config TOUCHSCREEN_MTK_GT9XX_HOTKNOT_PHONE
 
 source "drivers/input/touchscreen/mediatek/GT9XX_hotknot_phone/Kconfig"
 
+config TOUCHSCREEN_MTK_MSG2XXX
+	bool "MSG2XXX for Mediatek package"
+	default n
+	help
+	  Say Y here if you have MSG2XXX touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+source "drivers/input/touchscreen/mediatek/msg2xxx/Kconfig"
+
 config TOUCHSCREEN_MTK_SYNAPTICS_I2C_RMI4
 	tristate "Synaptics DSX I2C touchscreen"
 	depends on I2C

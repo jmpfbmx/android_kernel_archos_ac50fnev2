@@ -332,6 +332,7 @@ static int tpd_remove(struct platform_device *pdev);
 static struct work_struct tpd_init_work;
 static struct workqueue_struct *tpd_init_workqueue;
 static int tpd_suspend_flag;
+void TP_SetTP_Name_info(char *tp_name);
 int tpd_register_flag = 0;
 /* global variable definitions */
 struct tpd_device *tpd = 0;
@@ -682,4 +683,20 @@ void  tpd_device_exit(void)
 	/* input_unregister_device(tpd->dev); */
 	platform_driver_unregister(&tpd_driver);
 }
+static char local_tp_name[32]="Unknown";
+void TP_SetTP_Name_info(char *tp_name)
+{
+	if (NULL == tp_name)
+	{
+		return;
+	}
+	strcpy((char*)local_tp_name,(char*)tp_name);
+}
+void TP_GetTP_Name_info(char * tp_name)
+{
+	strcpy(tp_name, local_tp_name);
+}
+EXPORT_SYMBOL_GPL(TP_GetTP_Name_info);
+EXPORT_SYMBOL_GPL(TP_SetTP_Name_info);
+
 EXPORT_SYMBOL(tpd_device_exit);
